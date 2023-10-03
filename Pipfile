@@ -11,6 +11,8 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 sqlalchemy-serializer = "*"
 flask-restful = "*"
+python-dotenv = "*"
+honcho = "*"
 
 [dev-packages]
 
