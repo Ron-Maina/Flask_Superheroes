@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, jsonify, request, render_template
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from werkzeug.exceptions import BadRequest
@@ -25,17 +25,10 @@ db.init_app(app)
 
 api = Api(app)
 
-class Index(Resource):
-    def get(self):
-        response_dict = {
-            "message": "Welcome to the Superheroes Api"
-        }
-        response = make_response(
-            jsonify(response_dict),
-            200
-        )
-        return response
-api.add_resource(Index, '/')
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
 
 class Hero(Resource):
     def get(self):
